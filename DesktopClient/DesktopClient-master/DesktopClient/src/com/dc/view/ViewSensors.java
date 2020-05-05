@@ -74,7 +74,13 @@ public class ViewSensors extends javax.swing.JFrame {
             vector.add(se.getRoomNo());
             vector.add(String.valueOf(se.getSmokeLevel()));
             vector.add(String.valueOf(se.getCoLevel()));
-            vector.add(String.valueOf(se.getStatus()));
+            
+            //check the status of the sensor
+            if (se.getStatus() == 1) {
+                vector.add("Active");
+            } else {
+                vector.add("Inactive");
+            }
 
             vectors.add(vector);
             
