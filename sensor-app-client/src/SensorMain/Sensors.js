@@ -43,9 +43,8 @@ class Sensors extends Component {
             if(updation.status === 1){
                 updation.co2Level = Math.ceil(Math.random() * Math.floor(10));
                 updation.smokeLevel = Math.ceil(Math.random() * Math.floor(10));
+                this.updateSensorState(sensor.id, updation);
             }
-
-            this.updateSensorState(sensor.id, updation);
         });
     }
 
