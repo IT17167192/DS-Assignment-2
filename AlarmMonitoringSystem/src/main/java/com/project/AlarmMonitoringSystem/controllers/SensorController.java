@@ -36,11 +36,12 @@ public class SensorController {
 	
 	@GetMapping("/sensors")
 	@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
-	Collection<Sensor> sensors(){
+	Collection<Sensor> getSensors(){
 		return sensorRepository.findAll();
 	}
 	
 	@GetMapping("/sensor/{id}")
+	@CrossOrigin(origins = {"http://localhost:3001"})
 	ResponseEntity<?> getSensor(@PathVariable Long id){
 		Optional<Sensor> sensor = sensorRepository.findById(id);
 		return sensor.map(response -> ResponseEntity.ok().body(response))
