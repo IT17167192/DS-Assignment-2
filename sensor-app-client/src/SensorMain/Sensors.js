@@ -52,7 +52,7 @@ class Sensors extends Component {
     componentDidMount() {
         this.interval = setInterval(() => {
             this.preformDummyUpdate();
-        }, 3000);
+        }, 10000);
     }
 
     render() {
