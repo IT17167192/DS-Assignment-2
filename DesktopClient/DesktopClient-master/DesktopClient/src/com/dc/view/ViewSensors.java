@@ -49,7 +49,7 @@ public class ViewSensors extends javax.swing.JFrame {
             }
         });
 
-        timer.setDelay(5000); // set delay time
+        timer.setDelay(15000); // set delay time
         timer.start();  //start timer
     }
 
