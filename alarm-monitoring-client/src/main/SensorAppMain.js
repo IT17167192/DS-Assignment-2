@@ -28,7 +28,7 @@ class SensorAppMain extends Component {
         this.getSensorState();
         this.interval = setInterval(() => {
             this.getSensorState();
-        }, 5000);
+        }, 40000);
     }
 
     render() {
