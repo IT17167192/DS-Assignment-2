@@ -36,11 +36,13 @@ public class UserController {
 		this.userRepository = userRepository;
 	}
 	
+	//method return all the users
 	@GetMapping("/users")
 	Collection<User> users(){
 		return userRepository.findAll();
 	}
 	
+	//method find and return a user by id
 	@GetMapping("/user/{id}")
 	ResponseEntity<?> getUser(@PathVariable Long id){
 		Optional<User> user = userRepository.findById(id);
@@ -48,18 +50,21 @@ public class UserController {
 				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 	
+	//method creates a user
 	@PostMapping("/user")
 	ResponseEntity<User> createUser(@Valid @RequestBody User user) throws URISyntaxException{
 		User result = userRepository.save(user);
 		return ResponseEntity.created(new URI("/api/user" + result.getId())).body(result);
 	}
 	
+	//method find and update a user by id
 	@PutMapping("/user/{id}")
 	ResponseEntity<User> updateUser(@Valid @RequestBody User user){
 		User result = userRepository.save(user);
 		return ResponseEntity.ok().body(result);
 	}
 	
+	//method find and delete a user by id
 	@DeleteMapping("/user/{id}")
 	ResponseEntity<?> deleteUser(@PathVariable Long id){
 		userRepository.deleteById(id);
