@@ -34,12 +34,14 @@ public class SensorController {
 		this.sensorRepository = sensorRepository;
 	}
 	
+	//method returns all the sensors
 	@GetMapping("/sensors")
 	@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
 	Collection<Sensor> getSensors(){
 		return sensorRepository.findAll();
 	}
 	
+	//method finds and return a sensor by unique id
 	@GetMapping("/sensor/{id}")
 	@CrossOrigin(origins = {"http://localhost:3001"})
 	ResponseEntity<?> getSensor(@PathVariable Long id){
@@ -48,12 +50,14 @@ public class SensorController {
 				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 	
+	//method create a sensor
 	@PostMapping("/sensor")
 	ResponseEntity<Sensor> createSensor(@Valid @RequestBody Sensor sensor) throws URISyntaxException{
 		Sensor result = sensorRepository.save(sensor);
 		return ResponseEntity.created(new URI("/api/sensor" + result.getId())).body(result);
 	}
 	
+	//method find and update sensor by id
 	@PutMapping("/sensor/{id}")
 	@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
 	ResponseEntity<Sensor> updateSensor(@Valid @RequestBody Sensor sensor){
@@ -61,6 +65,7 @@ public class SensorController {
 		return ResponseEntity.ok().body(result);
 	}
 	
+	//method find and delete sensor by id
 	@DeleteMapping("/sensor/{id}")
 	ResponseEntity<?> deleteSensor(@PathVariable Long id){
 		sensorRepository.deleteById(id);
