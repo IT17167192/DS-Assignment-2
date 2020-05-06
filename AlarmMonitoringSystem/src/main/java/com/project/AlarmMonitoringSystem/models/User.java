@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Table(name = "user")
 public class User {
+	//auto incrementing the id
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String name;
