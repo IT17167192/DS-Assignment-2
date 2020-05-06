@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Table(name = "sensor")
 public class Sensor {
+	//auto incrementing the id
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private int floorNo;
@@ -25,10 +26,13 @@ public class Sensor {
 	private int smokeLevel;
 	private int co2Level;
 	private int status;
-	
+	//a User can add many sensors
+	//But sensor is added by one user
 	@ManyToOne
 	User addedBy;
 	
+	//a user may responsible for many sensors
+	//But each sensor must have one single responsible User
 	@ManyToOne
 	User responsiblePerson;
 }
