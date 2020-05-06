@@ -33,6 +33,7 @@ class Sensor extends Component {
         }
     }
 
+    //if the state has changed, componentWillReceiveProps will update the UI with new state
     componentWillReceiveProps(nextProps) {
         let co2RGBColor = "rgba(98,  182, 239,0.4)";
         let smokeRGBColor = "rgba(98,  182, 239,0.4)";
